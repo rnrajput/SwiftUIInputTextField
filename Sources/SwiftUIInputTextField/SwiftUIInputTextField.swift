@@ -17,7 +17,7 @@ public struct SwiftUIInputTextField: View {
     public var isPassword: Bool? = false
     public var height: Float? = 45
 
-    public init(placeholder: String, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil,height: Float?, isPassword: Bool?, textInput: Binding<String>) {
+    public init(placeholder: String, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil,height: Float = 0.0, isPassword: Bool = false, textInput: Binding<String>) {
         self.placeholder = placeholder
         self.fontName = fontName
         self.fontSize = fontSize
@@ -33,17 +33,22 @@ public struct SwiftUIInputTextField: View {
             if self.isPassword == true {
                 SecureField(placeholder ?? "", text: $textInput, onCommit: commit)
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
-                    .textFieldStyle(.roundedBorder)
-                    .frame(height: CGFloat(height ?? 45))
-                    .padding(.leading,5)
-                    .padding(.trailing,5)
+                    .frame(height: CGFloat(height ?? 45.0))
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .padding([.horizontal], 5)
+                    .cornerRadius(16)
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
+                    .padding([.horizontal], 30)
             } else {
                 TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit)
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
-                    .frame(height: CGFloat(height ?? 45))
-                    .padding(.leading,5)
-                    .padding(.trailing,5)
+                    .frame(height: CGFloat(height ?? 45.0))
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .padding([.horizontal], 5)
+                    .cornerRadius(16)
+                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
+                    .padding([.horizontal], 30)
             }
         }
     }
@@ -54,11 +59,10 @@ struct CustomTextM: ViewModifier {
     let fontName: String
     let fontSize: CGFloat
     let fontColor: Color
-     func body(content: Content) -> some View {
+    func body(content: Content) -> some View {
         content
             .font(.custom(fontName, size: fontSize))
             .foregroundColor(fontColor)
     }
 }
-
 //:completeSettings = none
