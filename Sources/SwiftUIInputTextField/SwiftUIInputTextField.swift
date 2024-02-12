@@ -6,7 +6,7 @@ import SwiftUI
 @available(macOS 10.15, *)
 public struct SwiftUIInputTextField: View {
     //MARK:- PROPERTIES
-    public var placeholder: Text?
+    public var placeholder: String?
     public var fontName: String?
     public var fontSize: CGFloat?
     public var fontColor: Color?
@@ -15,24 +15,23 @@ public struct SwiftUIInputTextField: View {
     public var editingChanged: (Bool)->() = { _ in }
     public var commit: ()->() = { }
 
-    public init(placeholder: Text, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil, textInput: Binding<String>, editingChanged: @escaping (Bool) -> Void, commit: @escaping () -> Void) {
+    public init(placeholder: String?, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil, textInput: Binding<String>) {
         self.placeholder = placeholder
         self.fontName = fontName
         self.fontSize = fontSize
         self.fontColor = fontColor
         self.foregroundColor = foregroundColor
         _textInput = textInput
-        self.editingChanged = editingChanged
-        self.commit = commit
     }
     
     public var body: some View {
         ZStack(alignment: .leading) {
-            if (textInput.isEmpty) {
-                placeholder.modifier(CustomTextM(fontName: fontName ?? "", fontSize: fontSize ?? 12, fontColor: .gray))
-            }
-            TextField("", text: $textInput, onEditingChanged: editingChanged, onCommit: commit).foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
+            TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit).foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                 .clipShape(Capsule())
+            textFieldStyle(.roundedBorder)
+            .frame(height: 42)
+            .padding(.leading,5)
+            .padding(.trailing,5)
         }
     }
 }
