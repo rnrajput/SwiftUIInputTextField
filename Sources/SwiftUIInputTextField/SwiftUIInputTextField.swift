@@ -27,7 +27,10 @@ public struct SwiftUIInputTextField: View {
     public var body: some View {
         ZStack(alignment: .leading) {
             TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit).foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
-                .clipShape(Capsule())
+                .textFieldStyle(.roundedBorder)
+                .frame(height: 42)
+                .padding(.leading,5)
+                .padding(.trailing,5)
         }
     }
 }
