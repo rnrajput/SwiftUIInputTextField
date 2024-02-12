@@ -15,15 +15,13 @@ public struct SwiftUIInputTextField: View {
     public var editingChanged: (Bool)->() = { _ in }
     public var commit: ()->() = { }
 
-    public init(placeholder: Text, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil, textInput: Binding<String>, editingChanged: @escaping (Bool) -> Void, commit: @escaping () -> Void) {
+    public init(placeholder: Text, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil, textInput: Binding<String>) {
         self.placeholder = placeholder
         self.fontName = fontName
         self.fontSize = fontSize
         self.fontColor = fontColor
         self.foregroundColor = foregroundColor
         _textInput = textInput
-        self.editingChanged = editingChanged
-        self.commit = commit
     }
     
     public var body: some View {
