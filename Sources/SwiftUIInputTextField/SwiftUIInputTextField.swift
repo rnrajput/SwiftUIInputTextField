@@ -42,7 +42,6 @@ public struct SwiftUIInputTextField: View {
             } else {
                 TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit)
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
-                    .textFieldStyle(.roundedBorder)
                     .frame(height: CGFloat(height ?? 45.0))
                     .textFieldStyle(PlainTextFieldStyle())
                     .padding([.horizontal], 5)
