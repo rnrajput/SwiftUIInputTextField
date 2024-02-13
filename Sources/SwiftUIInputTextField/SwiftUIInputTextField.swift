@@ -32,6 +32,7 @@ public struct SwiftUIInputTextField: View {
         ZStack(alignment: .leading) {
             if self.isPassword == true {
                 SecureField(placeholder ?? "", text: $textInput, onCommit: commit)
+                    .font(.custom(fontName ?? "", size: CGFloat(fontSize ?? 0.0)))
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                     .frame(height: CGFloat(height ?? 45.0))
                     .textFieldStyle(PlainTextFieldStyle())
@@ -39,8 +40,10 @@ public struct SwiftUIInputTextField: View {
                     .cornerRadius(16)
                     .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray))
                     .padding([.horizontal], 30)
+                
             } else {
                 TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit)
+                    .font(.custom(fontName ?? "", size: CGFloat(fontSize ?? 0.0)))
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                     .frame(height: CGFloat(height ?? 45.0))
                     .textFieldStyle(PlainTextFieldStyle())
@@ -50,18 +53,6 @@ public struct SwiftUIInputTextField: View {
                     .padding([.horizontal], 30)
             }
         }
-    }
-}
-@available(macOS 10.15, *)
-struct CustomTextM: ViewModifier {
-    //MARK:- PROPERTIES
-    let fontName: String
-    let fontSize: CGFloat
-    let fontColor: Color
-    func body(content: Content) -> some View {
-        content
-            .font(.custom(fontName, size: fontSize))
-            .foregroundColor(fontColor)
     }
 }
 //:completeSettings = none
