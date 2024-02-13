@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(macOS 15.0, *)
 public struct SwiftUIInputTextField: View {
     //MARK:- PROPERTIES
     public var placeholder: String?
@@ -32,6 +32,7 @@ public struct SwiftUIInputTextField: View {
         ZStack(alignment: .leading) {
             if self.isPassword == true {
                 SecureField(placeholder ?? "", text: $textInput, onCommit: commit)
+                    .textCase(.lowercase)
                     .font(.custom(fontName ?? "", size: CGFloat(fontSize ?? 0.0)))
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                     .frame(height: CGFloat(height ?? 45.0))
@@ -43,6 +44,7 @@ public struct SwiftUIInputTextField: View {
                 
             } else {
                 TextField(placeholder ?? "", text: $textInput, onEditingChanged: editingChanged, onCommit: commit)
+                    .textCase(.lowercase)
                     .font(.custom(fontName ?? "", size: CGFloat(fontSize ?? 0.0)))
                     .foregroundColor((foregroundColor != nil) ? foregroundColor : .black).autocorrectionDisabled()
                     .frame(height: CGFloat(height ?? 45.0))
