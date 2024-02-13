@@ -39,7 +39,7 @@ public struct SwiftUIInputTextField: View {
                     .textFieldStyle(PlainTextFieldStyle())
                     .padding([.horizontal], 8)
                     .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(foregroundColor ?? Color.gray.opacity(0.3)))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(foregroundColor ?? Color.gray.opacity(0.3)))
                     .padding([.horizontal], 30)
                 
             } else {
@@ -51,7 +51,7 @@ public struct SwiftUIInputTextField: View {
                     .textFieldStyle(PlainTextFieldStyle())
                     .padding([.horizontal], 8)
                     .cornerRadius(16)
-                    .overlay(RoundedRectangle(cornerRadius: 16).stroke(foregroundColor ?? Color.gray.opacity(0.3)))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(foregroundColor ?? Color.gray.opacity(0.3)))
                     .padding([.horizontal], 30)
             }
         }
