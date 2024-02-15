@@ -4,7 +4,7 @@
 import SwiftUI
 
 
-@available(macOS 13.15, *)
+@available(macOS 14.0, *)
 public struct SwiftUIInputTextField: View {
     //MARK:- PROPERTIES
     public var fontName: String?
@@ -67,7 +67,7 @@ public struct SwiftUIInputTextField: View {
         }
     }
 }
-@available(macOS 13.15, *)
+@available(macOS 14.0, *)
 public extension SwiftUIInputTextField {
     func setTextCase(text: String) -> String {
         if let textCase = textCase {
