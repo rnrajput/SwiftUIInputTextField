@@ -16,7 +16,6 @@ public struct SwiftUIInputTextField: View {
     public var placeholder: String?
     public var isPassword: Bool? = false
     @Binding public var textInput: String
-    public var textCase: Text.Case?
     
     public init(placeholder: String, fontName: String?, fontSize: CGFloat?, fontColor: Color?, foregroundColor: Color? = nil,height: Float = 0.0, isPassword: Bool = false, textInput: Binding<String>) {
         self.placeholder = placeholder
@@ -70,13 +69,6 @@ public struct SwiftUIInputTextField: View {
 @available(macOS 14.0, *)
 public extension SwiftUIInputTextField {
     func setTextCase(text: String) -> String {
-        if let textCase = textCase {
-            if textCase == .uppercase {
-                return text.lowercased()
-            } else if textCase == .lowercase {
-                return text.lowercased()
-            }
-        }
         return text.lowercased()
     }
 }
